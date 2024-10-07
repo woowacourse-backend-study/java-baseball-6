@@ -14,6 +14,10 @@
 
     - 잘못된 값을 입력할때 IllegalArgumentException 발생 후 애플리케이션 종료
 
+#### 라이브러리
+
+    - 사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용
+
 ---
 
 ## 출력 요구사항
@@ -44,6 +48,7 @@
 
     - 1 ~ 9 까지의 숫자를 랜덤으로 3개 생성
     - 각 숫자는 중복되면 안됨
+    - Random 값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용
 
 #### 2. 숫자 입력
 
