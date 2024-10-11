@@ -18,6 +18,10 @@ public class Number {
         return this.number == number.getNumber();
     }
 
+    public boolean checkIndex(int index) {
+        return this.index == index;
+    }
+
     // 숫자 생성할때 검증 로직 제작
     public void validRange(int number) {
         if ( number > 0 && number < 10) {

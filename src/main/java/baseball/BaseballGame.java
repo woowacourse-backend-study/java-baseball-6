@@ -18,6 +18,10 @@ public class BaseballGame {
         Numbers inputNumbers = numbersGenerator.inputNumbersGenerate(inputNumber);
         System.out.println(inputNumbers);
         // 정답 번호 생성
+        Referee referee = new Referee();
+        referee.judge(gameNumbers, inputNumbers);
+        System.out.println(referee.getGameResult());
+        System.out.println(referee.getCountResult());
         // 심판이 정답 판단
         // 결과 출력
         // 게임 종료 여부 판단
