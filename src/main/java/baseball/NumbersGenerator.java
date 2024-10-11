@@ -8,7 +8,7 @@ public class NumbersGenerator {
     public Numbers randomNumberGenerate() {
         Numbers numbers = new Numbers();
         while (numbers.size() < 3) {
-            Number randomNumber = new Number(Randoms.pickNumberInRange(1, 9));
+            Number randomNumber = new Number(Randoms.pickNumberInRange(1, 9), numbers.size());
             if (!numbers.isContains(randomNumber)) {
                 numbers.add(randomNumber);
             }
@@ -25,7 +25,7 @@ public class NumbersGenerator {
 
         Numbers numbers = new Numbers();
         inputNumbers.forEach(num -> {
-            numbers.add(new Number(num));
+            numbers.add(new Number(num,numbers.size()));
         });
 
         return numbers;

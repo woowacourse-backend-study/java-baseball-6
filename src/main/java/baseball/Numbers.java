@@ -19,6 +19,17 @@ public class Numbers {
         return numbers.stream().anyMatch(num -> num.isSame(number));
     }
 
+    public int indexOf(Number number) {
+        int index = 0;
+        for (Number num : numbers) {
+            if (num.isSame(number)) {
+                return index;
+            }
+            index++;
+        }
+        return 0;
+    }
+
     public void validNumbers(Number number) {
         validSize();
         validDuplication(number);

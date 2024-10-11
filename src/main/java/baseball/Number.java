@@ -2,10 +2,12 @@ package baseball;
 
 public class Number {
     private final int number;
+    private final int index;
 
-    public Number(int number) {
+    public Number(int number, int index) {
         validRange(number);
         this.number = number;
+        this.index = index;
     }
 
     public int getNumber() {
@@ -26,6 +28,6 @@ public class Number {
 
     @Override
     public String toString() {
-        return ""+ number;
+        return "["+ index + " , " + number + "]";
     }
 }
