@@ -41,6 +41,6 @@ public class GameResult {
             return strike + "스트라이크";
         }
 
-        return ball + "볼, " + strike + "스트라이크";
+        return ball + "볼 " + strike + "스트라이크";
     }
 }
