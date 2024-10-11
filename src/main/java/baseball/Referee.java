@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Referee {
-    public boolean gameResult = false;
     public Map<String,Integer> countResult = new HashMap<>();
 
     public Referee() {
@@ -21,20 +20,12 @@ public class Referee {
         }
     }
 
-    public void checkGameResult() {
-        if(sumResult() == 3 && countResult.get("BALL") == 0) {
-            gameResult = true;
-            return;
-        }
-        gameResult = false;
+    public boolean getGameResult() {
+        return sumResult() == 3 && countResult.get("BALL") == 0;
     }
 
     public int sumResult() {
         return countResult.values().stream().mapToInt(Integer::intValue).sum();
-    }
-
-    public boolean getGameResult() {
-        return gameResult;
     }
 
     public Map<String, Integer> getCountResult() {
@@ -42,7 +33,6 @@ public class Referee {
     }
 
     public void init() {
-        gameResult = false;
         countResult.put("STRIKE",0) ;
         countResult.put("BALL",0) ;
     }
