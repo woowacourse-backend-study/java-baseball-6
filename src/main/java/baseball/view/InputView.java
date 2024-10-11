@@ -13,17 +13,23 @@ public class InputView {
     public static int inputContinueOrExit() {
         System.out.println(Message.INPUT_CONTINUE_OR_EXIT);
 
-        int select;
+        int input = convertStringToInt(Console.readLine());
+        checkInputValid(input);
+
+        return input;
+    }
+
+    private static int convertStringToInt(String input) {
         try {
-            select = Integer.parseInt(Console.readLine());
+            return Integer.parseInt(input);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(Message.ERROR_INPUT_CONTINUE_OR_EXIT);
         }
+    }
 
-        if (select != State.CONTINUE && select != State.EXIT) {
+    private static void checkInputValid(int input) {
+        if (input != State.CONTINUE && input != State.EXIT) {
             throw new IllegalArgumentException(Message.ERROR_INPUT_CONTINUE_OR_EXIT);
         }
-
-        return select;
     }
 }

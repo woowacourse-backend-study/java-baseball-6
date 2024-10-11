@@ -12,20 +12,24 @@ public class BaseballGameController {
         StartView.startComment();
 
         do {
-            Balls computerBalls = new Balls();
-            while (true) {
-
-                String inputNumbers = InputView.inputNumbers();
-                Balls userBalls = new Balls(inputNumbers);
-
-                GameResult gameResult = new GameResult(computerBalls, userBalls);
-                OutputView.gameResult(gameResult);
-
-                if (gameResult.isAnswer()) {
-                    OutputView.gameEnd();
-                    break;
-                }
-            }
+            playRound();
         } while (InputView.inputContinueOrExit() == State.CONTINUE);
+    }
+
+    private void playRound(){
+        Balls computerBalls = new Balls();
+        while (true) {
+
+            String inputNumbers = InputView.inputNumbers();
+            Balls userBalls = new Balls(inputNumbers);
+
+            GameResult gameResult = new GameResult(computerBalls, userBalls);
+            OutputView.gameResult(gameResult);
+
+            if (gameResult.isAnswer()) {
+                OutputView.gameEnd();
+                break;
+            }
+        }
     }
 }
