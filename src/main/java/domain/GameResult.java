@@ -1,0 +1,26 @@
+package domain;
+
+import java.util.stream.Stream;
+
+public class GameResult {
+    private int strike;
+    private int ball;
+
+    public GameResult(Balls computerBalls, Balls userBalls) {
+        strike = countStrike(computerBalls, userBalls);
+        ball = countContain(computerBalls, userBalls) - strike;
+    }
+
+    private int countStrike(Balls computerBalls, Balls userBalls) {
+        return (int) Stream.iterate(0, i -> i + 1).limit(3)
+                .filter(i -> computerBalls.isSameByPosition(userBalls, i))
+                .count();
+    }
+
+    private int countContain(Balls computerBalls, Balls userBalls) {
+        return (int) Stream.iterate(0, i -> i + 1).limit(3)
+                .filter(i -> computerBalls.isContain(userBalls, i))
+                .count() - strike;
+    }
+
+}

@@ -3,6 +3,7 @@ package baseball.controller;
 import baseball.view.InputView;
 import baseball.view.StartView;
 import domain.Balls;
+import domain.GameResult;
 
 public class BaseballGameController {
     public void run() {
@@ -11,5 +12,7 @@ public class BaseballGameController {
 
         String inputNumbers = InputView.inputNumbers();
         Balls userBalls = new Balls(inputNumbers);
+
+        GameResult gameResult = new GameResult(computerBalls, userBalls);
     }
 }

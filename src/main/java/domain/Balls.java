@@ -44,4 +44,12 @@ public class Balls {
                 .boxed()
                 .collect(Collectors.toList());
     }
+
+    public boolean isSameByPosition(Balls compareBalls, int position) {
+        return this.balls.get(position).equals(compareBalls.balls.get(position));
+    }
+
+    public boolean isContain(Balls userBalls, Integer i) {
+        return this.balls.contains(userBalls.balls.get(i));
+    }
 }
