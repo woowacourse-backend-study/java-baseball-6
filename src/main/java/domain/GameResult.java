@@ -20,7 +20,7 @@ public class GameResult {
     private int countContain(Balls computerBalls, Balls userBalls) {
         return (int) Stream.iterate(0, i -> i + 1).limit(3)
                 .filter(i -> computerBalls.isContain(userBalls, i))
-                .count() - strike;
+                .count();
     }
 
     public boolean isAnswer() {
