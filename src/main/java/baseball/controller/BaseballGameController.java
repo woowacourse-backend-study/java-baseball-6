@@ -10,19 +10,21 @@ public class BaseballGameController {
     public void run() {
         StartView.startComment();
 
-        while (true) {
+        do {
             Balls computerBalls = new Balls();
+            while (true) {
 
-            String inputNumbers = InputView.inputNumbers();
-            Balls userBalls = new Balls(inputNumbers);
+                String inputNumbers = InputView.inputNumbers();
+                Balls userBalls = new Balls(inputNumbers);
 
-            GameResult gameResult = new GameResult(computerBalls, userBalls);
-            OutputView.gameResult(gameResult);
+                GameResult gameResult = new GameResult(computerBalls, userBalls);
+                OutputView.gameResult(gameResult);
 
-            if (gameResult.isAnswer()) {
-                OutputView.gameEnd();
-                break;
+                if (gameResult.isAnswer()) {
+                    OutputView.gameEnd();
+                    break;
+                }
             }
-        }
+        } while (InputView.inputContinueOrExit() == 1);
     }
 }
