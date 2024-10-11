@@ -1,5 +1,6 @@
 package baseball.view;
 
+import baseball.constant.Message;
 import domain.GameResult;
 
 public class OutputView {
@@ -8,6 +9,6 @@ public class OutputView {
     }
 
     public static void gameEnd() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println(Message.GAME_END);
     }
 }

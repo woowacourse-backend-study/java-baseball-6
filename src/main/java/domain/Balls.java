@@ -1,5 +1,7 @@
 package domain;
 
+import baseball.constant.Condition;
+import baseball.constant.Message;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,8 +14,8 @@ public class Balls {
     public Balls() {
         balls = new ArrayList<>();
 
-        while (balls.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (balls.size() < Condition.TOTAL_BALL_COUNT) {
+            int randomNumber = Randoms.pickNumberInRange(Condition.MIN_BALL_NUMBER, Condition.MAX_BALL_NUMBER);
             if (!balls.contains(randomNumber)) {
                 balls.add(randomNumber);
             }
@@ -21,8 +23,8 @@ public class Balls {
     }
 
     public Balls(String inputNumbers) {
-        if (inputNumbers.length() != 3) {
-            throw new IllegalArgumentException("1 ~ 9를 이용한 3자리 숫자를 입력해 주세요");
+        if (inputNumbers.length() != Condition.TOTAL_BALL_COUNT) {
+            throw new IllegalArgumentException(Message.ERROR_INPUT_BALL_NUMBERS);
         }
 
         balls = Arrays.stream(inputNumbers.split(""))
@@ -32,11 +34,11 @@ public class Balls {
                     try {
                         number = Integer.parseInt(ch);
                     } catch (NumberFormatException e) {
-                        throw new IllegalArgumentException("1 ~ 9를 이용한 3자리 숫자를 입력해 주세요");
+                        throw new IllegalArgumentException(Message.ERROR_INPUT_BALL_NUMBERS);
                     }
 
-                    if (number == 0) {
-                        throw new IllegalArgumentException("1 ~ 9를 이용한 3자리 숫자를 입력해 주세요");
+                    if (number < Condition.MIN_BALL_NUMBER || number > Condition.MAX_BALL_NUMBER) {
+                        throw new IllegalArgumentException(Message.ERROR_INPUT_BALL_NUMBERS);
                     }
 
                     return number;

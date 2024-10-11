@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.constant.State;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import baseball.view.StartView;
@@ -25,6 +26,6 @@ public class BaseballGameController {
                     break;
                 }
             }
-        } while (InputView.inputContinueOrExit() == 1);
+        } while (InputView.inputContinueOrExit() == State.CONTINUE);
     }
 }
