@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.view.InputView;
+import baseball.view.OutputView;
 import baseball.view.StartView;
 import domain.Balls;
 import domain.GameResult;
@@ -14,5 +15,6 @@ public class BaseballGameController {
         Balls userBalls = new Balls(inputNumbers);
 
         GameResult gameResult = new GameResult(computerBalls, userBalls);
+        OutputView.gameResult(gameResult);
     }
 }
