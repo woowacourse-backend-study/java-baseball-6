@@ -23,34 +23,38 @@ public class Balls {
     }
 
     public Balls(String inputNumbers) {
-        checkInputNumberLength(inputNumbers);
-
         balls = Arrays.stream(inputNumbers.split(""))
-                .mapToInt(ch -> {
-                    int number = convertCharToInt(ch);
-                    checkInputNumberRangeValid(number);
-                    return number;
-                })
+                .mapToInt(this::convertCharToInt)
                 .boxed()
                 .collect(Collectors.toList());
-    }
 
-    private void checkInputNumberLength(String inputNumbers) {
-        if (inputNumbers.length() != Condition.TOTAL_BALL_COUNT) {
-            throw new IllegalArgumentException(Message.ERROR_INPUT_BALL_NUMBERS);
-        }
-    }
-
-    private void checkInputNumberRangeValid(int number) {
-        if (number < Condition.MIN_BALL_NUMBER || number > Condition.MAX_BALL_NUMBER) {
-            throw new IllegalArgumentException(Message.ERROR_INPUT_BALL_NUMBERS);
-        }
+        checkInputNumberLength();
+        checkInputNumberRange();
+        checkInputNumberDuplicate();
     }
 
     private int convertCharToInt(String ch) {
         try {
             return Integer.parseInt(ch);
         } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(Message.ERROR_INPUT_BALL_NUMBERS);
+        }
+    }
+
+    private void checkInputNumberLength() {
+        if (balls.size() != Condition.TOTAL_BALL_COUNT) {
+            throw new IllegalArgumentException(Message.ERROR_INPUT_BALL_NUMBERS);
+        }
+    }
+
+    private void checkInputNumberRange() {
+        if (balls.stream().anyMatch(n -> n < Condition.MIN_BALL_NUMBER || n > Condition.MAX_BALL_NUMBER)) {
+            throw new IllegalArgumentException(Message.ERROR_INPUT_BALL_NUMBERS);
+        }
+    }
+
+    private void checkInputNumberDuplicate() {
+        if (balls.stream().distinct().count() != Condition.TOTAL_BALL_COUNT) {
             throw new IllegalArgumentException(Message.ERROR_INPUT_BALL_NUMBERS);
         }
     }
