@@ -16,7 +16,7 @@ public class BaseballGameController {
         } while (InputView.inputContinueOrExit() == State.CONTINUE);
     }
 
-    private void playRound(){
+    private void playRound() {
         Balls computerBalls = new Balls();
         while (true) {
 
