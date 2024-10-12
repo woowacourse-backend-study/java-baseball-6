@@ -37,25 +37,25 @@ public class Balls {
         try {
             return Integer.parseInt(ch);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(Message.ERROR_INPUT_BALL_NUMBERS);
+            throw new IllegalArgumentException(Message.ERROR_INPUT_BALL_ONLY_NUMBERS);
         }
     }
 
     private void checkInputNumberLength() {
         if (balls.size() != Condition.TOTAL_BALL_COUNT) {
-            throw new IllegalArgumentException(Message.ERROR_INPUT_BALL_NUMBERS);
+            throw new IllegalArgumentException(Message.ERROR_INPUT_BALL_NUMBERS_LENGTH);
         }
     }
 
     private void checkInputNumberRange() {
         if (balls.stream().anyMatch(n -> n < Condition.MIN_BALL_NUMBER || n > Condition.MAX_BALL_NUMBER)) {
-            throw new IllegalArgumentException(Message.ERROR_INPUT_BALL_NUMBERS);
+            throw new IllegalArgumentException(Message.ERROR_INPUT_BALL_NUMBERS_RANGE);
         }
     }
 
     private void checkInputNumberDuplicate() {
         if (balls.stream().distinct().count() != Condition.TOTAL_BALL_COUNT) {
-            throw new IllegalArgumentException(Message.ERROR_INPUT_BALL_NUMBERS);
+            throw new IllegalArgumentException(Message.ERROR_INPUT_BALL_DUPLICATE);
         }
     }
 
