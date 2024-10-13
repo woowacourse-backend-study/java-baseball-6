@@ -33,4 +33,22 @@ public class ScoreCalculatorTest {
 
     }
 
+    @DisplayName("다른 자리에 같은 숫자 -> 볼")
+    @ParameterizedTest(name = "{index} {displayName} message= {0}, {1}, {2}")
+    @MethodSource("ballParametersProvider")
+    void checkCalculateBall(List<Integer> computer, List<Integer> player, Integer ballCount) {
+        ScoreCalculator scoreCalculator = new ScoreCalculator(computer, player);
+        assertThat(scoreCalculator.calculateBall()).isEqualTo(ballCount);
+    }
+
+    static List<Arguments> ballParametersProvider() {
+        List<Arguments> argumentsList = new ArrayList<>();
+        argumentsList.add(Arguments.arguments(List.of(1, 2, 3), List.of(3, 1, 2), 3));
+        argumentsList.add(Arguments.arguments(List.of(4, 5, 6), List.of(6, 4, 5), 3));
+        argumentsList.add(Arguments.arguments(List.of(1, 2, 3), List.of(1, 3, 2), 2));
+        return argumentsList;
+    }
+
+
+
 }

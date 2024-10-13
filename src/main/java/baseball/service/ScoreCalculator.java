@@ -24,5 +24,16 @@ public class ScoreCalculator {
         return strikeCount;
     }
 
+    public Integer calculateBall() {
+        int ballCount = 0;
+        for (int index = 0; index < player.size(); index++) {
+            // 같은 숫자를 가지고 있지만 다른 자리에 위치하는 경우
+            if (computer.contains(player.get(index)) && !player.get(index).equals(computer.get(index))) {
+                ballCount++;
+            }
+        }
+        return ballCount;
+    }
+
 
 }
