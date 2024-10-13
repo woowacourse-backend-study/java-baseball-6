@@ -24,18 +24,16 @@ public class BaseballGame {
             // 정답 번호 입력 문구 출력
             String inputNumber = printInputMessage("숫자를 입력해주세요 : ");
             Numbers inputNumbers = numbersGenerator.inputNumbersGenerate(inputNumber);
-            System.out.println(inputNumbers);
             // 정답 번호 생성
             referee.judge(gameNumbers, inputNumbers);
-            System.out.println(referee.getGameResult());
-            System.out.println(referee.getCountResult());
             // 심판이 정답 판단
             // 결과 출력
-            gameStatus = referee.getGameResult();
+            gameStatus = referee.checkGameResult();
+            referee.generateHint();
         }
-        while (gameStatus);
+        while (!gameStatus);
 
-        System.out.println("게임 완료");
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 
         // 게임 종료 여부 판단
         // 게임 종료 시 -> 재시작, 종료 여부 입력 문구 출력

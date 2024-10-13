@@ -20,12 +20,34 @@ public class Referee {
         }
     }
 
-    public boolean getGameResult() {
-        return sumResult() == 3 && countResult.get("BALL") == 0;
+    public boolean checkGameResult() {
+        return countResult.get("STRIKE") == 3 && countResult.get("BALL") == 0;
     }
 
-    public int sumResult() {
-        return countResult.values().stream().mapToInt(Integer::intValue).sum();
+    public void generateHint() {
+
+        if(countResult.get("STRIKE") != 0 && countResult.get("BALL") == 0) {
+            System.out.printf("%s스트라이크",countResult.get("STRIKE"));
+            System.out.println();
+            return;
+        }
+
+        if(countResult.get("STRIKE") == 0 && countResult.get("BALL") != 0) {
+            System.out.printf("%s볼",countResult.get("BALL"));
+            System.out.println();
+            return;
+        }
+
+        if(countResult.get("STRIKE") != 0 && countResult.get("BALL") != 0) {
+            System.out.printf("%s볼 %s스트라이크",countResult.get("STRIKE"),countResult.get("BALL"));
+            System.out.println();
+            return;
+        }
+
+        if(countResult.get("STRIKE") == 0 && countResult.get("BALL") == 0) {
+            System.out.println("낫싱");
+            System.out.println();
+        }
     }
 
     public Map<String, Integer> getCountResult() {

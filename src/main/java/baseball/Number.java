@@ -24,7 +24,7 @@ public class Number {
 
     // 숫자 생성할때 검증 로직 제작
     public void validRange(int number) {
-        if ( number > 0 && number < 10) {
+        if ( number >= 1 && number <= 9) {
             return;
         }
         throw new IllegalArgumentException();
