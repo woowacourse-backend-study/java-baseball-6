@@ -5,6 +5,8 @@ import baseball.util.Converter;
 import baseball.util.RandomNumbersMaker;
 import baseball.view.InputView;
 import baseball.view.OutputView;
+import validator.NumberValidator;
+import validator.Validator;
 
 import java.util.List;
 
@@ -12,6 +14,8 @@ public class BaseballController {
     private final OutputView outputView;
     private final InputView inputView;
     private ScoreCalculator scoreCalculator;
+
+    private  NumberValidator validator;
 
 
 
@@ -53,6 +57,12 @@ public class BaseballController {
             return;
         }
         throw new IllegalArgumentException("재시작/종료 명령이 잘못되었습니다."); //필수
+    }
+    private String readGuessNumber() {
+        // 입력받은 숫자 유효성 검증 후 반환
+        String value = String.valueOf(inputView.getGuessNumber());
+        validator.validate(value);  // NumberValidator를 통한 유효성 검증
+        return value;
     }
 
 
