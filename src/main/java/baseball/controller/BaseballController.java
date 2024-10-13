@@ -44,6 +44,16 @@ public class BaseballController {
 
         }
 
+        String gameCommand = inputView.getRestartMessage();
+        if (gameCommand.equals("1")) {
+            app();
+            return;
+        }
+        if (gameCommand.equals("2")) {
+            return;
+        }
+    }
+
 
     }
-}
+
