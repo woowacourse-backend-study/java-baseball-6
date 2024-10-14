@@ -1,5 +1,9 @@
-package baseball;
+package baseball.view;
 
+import static baseball.constants.Error.INPUT_FORMAT_ERROR;
+import static baseball.constants.Input.END_GAME_OPTION;
+import static baseball.constants.Input.INPUT_NUMBER_REGEX;
+import static baseball.constants.Input.RESTART_GAME_OPTION;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Input {
@@ -23,14 +27,14 @@ public class Input {
     }
 
     private static void validateInputNumber(String input) {
-        if(!input.matches("^[1-9]*$")) {
-            throw new IllegalArgumentException("올바른 입력 형식이 아닙니다.");
+        if(!input.matches(INPUT_NUMBER_REGEX)) {
+            throw new IllegalArgumentException(INPUT_FORMAT_ERROR);
         }
     }
 
     private static void validateInputGameOption(String input) {
-        if(!(input.equals("1") || input.equals("2"))) {
-            throw new IllegalArgumentException("올바른 입력 형식이 아닙니다.");
+        if(!(input.equals(RESTART_GAME_OPTION) || input.equals(END_GAME_OPTION))) {
+            throw new IllegalArgumentException(INPUT_FORMAT_ERROR);
         }
     }
 }

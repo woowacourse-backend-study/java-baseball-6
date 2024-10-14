@@ -1,5 +1,9 @@
 package baseball;
 
+import static baseball.constants.Error.DUPLICATION_ERROR;
+import static baseball.constants.Error.SIZE_ERROR;
+import static baseball.constants.Game.NUMBERS_SIZE;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -37,14 +41,14 @@ public class Numbers {
     }
 
     public void validSize() {
-        if(numbers.size() >= 3) {
-            throw new IllegalArgumentException("게임에 이용되는 숫자는 3개입니다.");
+        if(numbers.size() >= NUMBERS_SIZE) {
+            throw new IllegalArgumentException(SIZE_ERROR);
         };
     }
 
     public void validDuplication(Number number) {
         if(numbers.stream().anyMatch(num -> num.isSame(number))) {
-            throw new IllegalArgumentException("중복되는 숫자는 사용할 수 없습니다");
+            throw new IllegalArgumentException(DUPLICATION_ERROR);
         }
     }
 

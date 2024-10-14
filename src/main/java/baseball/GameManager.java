@@ -1,6 +1,8 @@
 package baseball;
 
-import static baseball.Input.printInputGameOption;
+import static baseball.constants.Input.INPUT_GAME_OPTION_MESSAGE;
+import static baseball.constants.Input.RESTART_GAME_OPTION;
+import static baseball.view.Input.printInputGameOption;
 
 public class GameManager {
     private final BaseballGame baseballGame = new BaseballGame();
@@ -9,9 +11,9 @@ public class GameManager {
         try {
 
             baseballGame.start();
-            String input = printInputGameOption("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String input = printInputGameOption(INPUT_GAME_OPTION_MESSAGE);
 
-            if (input.equals("1")) {
+            if (input.equals(RESTART_GAME_OPTION)) {
                 generateGame();
             }
 

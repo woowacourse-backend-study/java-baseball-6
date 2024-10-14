@@ -1,14 +1,17 @@
 package baseball;
 
-import static baseball.Input.printInputNumberMessage;
-import static baseball.Output.printMessage;
+import static baseball.constants.Input.INPUT_NUMBER_MESSAGE;
+import static baseball.constants.Output.END_MESSAGE;
+import static baseball.constants.Output.START_MESSAGE;
+import static baseball.view.Input.printInputNumberMessage;
+import static baseball.view.Output.printMessage;
 
 public class BaseballGame {
 
     private boolean gameStatus = false;
 
     public void start() {
-        printMessage("숫자 야구 게임을 시작합니다.");
+        printMessage(START_MESSAGE);
         Referee referee = new Referee();
 
         NumbersGenerator numbersGenerator = new NumbersGenerator();
@@ -18,7 +21,7 @@ public class BaseballGame {
         do {
             referee.init();
 
-            String inputNumber = printInputNumberMessage("숫자를 입력해주세요 : ");
+            String inputNumber = printInputNumberMessage(INPUT_NUMBER_MESSAGE);
             Numbers inputNumbers = numbersGenerator.inputNumbersGenerate(inputNumber);
 
             referee.judge(gameNumbers, inputNumbers);
@@ -28,6 +31,6 @@ public class BaseballGame {
         }
         while (!gameStatus);
 
-        printMessage("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        printMessage(END_MESSAGE);
     }
 }

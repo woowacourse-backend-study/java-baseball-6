@@ -1,5 +1,9 @@
 package baseball;
 
+import static baseball.constants.Game.MAX_NUMBER;
+import static baseball.constants.Game.MIN_NUMBER;
+import static baseball.constants.Game.NUMBERS_SIZE;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 
@@ -7,8 +11,8 @@ public class NumbersGenerator {
 
     public Numbers randomNumberGenerate() {
         Numbers numbers = new Numbers();
-        while (numbers.size() < 3) {
-            Number randomNumber = new Number(Randoms.pickNumberInRange(1, 9), numbers.size());
+        while (numbers.size() < NUMBERS_SIZE) {
+            Number randomNumber = new Number(Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER), numbers.size());
             if (!numbers.isContains(randomNumber)) {
                 numbers.add(randomNumber);
             }
@@ -17,9 +21,6 @@ public class NumbersGenerator {
     }
 
     public Numbers inputNumbersGenerate(String input) {
-        if(!input.matches("^[1-9]*$")) {
-            throw new IllegalArgumentException();
-        }
         List<Integer> inputNumbers = input.chars()
             .mapToObj(str -> Character.getNumericValue(str)).toList();
 
