@@ -27,11 +27,12 @@ public class Number {
         if ( number >= 1 && number <= 9) {
             return;
         }
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException("1~9 사이의 숫자만 사용가능합니다.");
     }
 
     @Override
     public String toString() {
         return "["+ index + " , " + number + "]";
     }
+
 }
