@@ -35,27 +35,20 @@ public class Numbers {
             .orElse(-1);
     }
 
-    public void validNumbers(Number number) {
+    private void validNumbers(Number number) {
         validSize();
         validDuplication(number);
     }
 
-    public void validSize() {
+    private void validSize() {
         if(numbers.size() >= NUMBERS_SIZE) {
             throw new IllegalArgumentException(SIZE_ERROR);
         };
     }
 
-    public void validDuplication(Number number) {
+    private void validDuplication(Number number) {
         if(numbers.stream().anyMatch(num -> num.isSame(number))) {
             throw new IllegalArgumentException(DUPLICATION_ERROR);
         }
-    }
-
-    @Override
-    public String toString() {
-        return "Numbers{" +
-            "numbers=" + numbers +
-            '}';
     }
 }

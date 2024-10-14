@@ -27,16 +27,10 @@ public class Number {
     }
 
     // 숫자 생성할때 검증 로직 제작
-    public void validRange(int number) {
+    private void validRange(int number) {
         if ( number >= MIN_NUMBER && number <= MAX_NUMBER) {
             return;
         }
         throw new IllegalArgumentException(NUMBER_RANGE_ERROR);
     }
-
-    @Override
-    public String toString() {
-        return "["+ index + " , " + number + "]";
-    }
-
 }

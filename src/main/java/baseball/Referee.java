@@ -58,18 +58,8 @@ public class Referee {
         }
     }
 
-    public Map<String, Integer> getCountResult() {
-        return countResult;
-    }
-
     public void init() {
         countResult.put(STRIKE,0) ;
         countResult.put(BALL,0) ;
     }
-
-//    합이 0이면 -> 낫싱 -> 게임 계속 진행
-//    합이 3 인데 0이 없으면 -> 3스트라이크 -> 게임 종료
-//    합이 3이 인데 0이 있으면 -> 힌트 제공 -> 게임 계속 진행
-//    합이 3보다 크면 -> 힌트 제공 -> 게임 계속 진행
-//    합이 3보다 작으면 -> 힌트 제공 -> 게임 계속 진행
 }

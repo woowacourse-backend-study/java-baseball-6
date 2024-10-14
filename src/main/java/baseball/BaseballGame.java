@@ -16,7 +16,6 @@ public class BaseballGame {
 
         NumbersGenerator numbersGenerator = new NumbersGenerator();
         Numbers gameNumbers = numbersGenerator.randomNumberGenerate();
-        System.out.println(gameNumbers);
 
         do {
             referee.init();
@@ -27,8 +26,10 @@ public class BaseballGame {
             referee.judge(gameNumbers, inputNumbers);
 
             gameStatus = referee.checkGameResult();
+
             referee.generateHint();
         }
+
         while (!gameStatus);
 
         printMessage(END_MESSAGE);
