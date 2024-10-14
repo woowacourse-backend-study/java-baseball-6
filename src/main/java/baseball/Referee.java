@@ -12,7 +12,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Referee {
-    public Map<String,Integer> countResult = new HashMap<>();
+
+    private Map<String,Integer> countResult = new HashMap<>();
 
     public Referee() {
         init();
